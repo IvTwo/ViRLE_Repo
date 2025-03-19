@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab4d974105d6a564cba8992b518e23f6, type: 3}
+  m_Name: st_01
+  m_EditorClassIdentifier: 
+  data:
+  - dialoguePrefab: {fileID: 4283847168726583360, guid: 6b6d2c9de8466a1469ca54ad8e724be7, type: 3}
+    dialogueText: This is a test.
+  - dialoguePrefab: {fileID: 4283847168726583360, guid: 6b6d2c9de8466a1469ca54ad8e724be7, type: 3}
+    dialogueText: If you're seeing this the dialogue manager works wahoo!
+  - dialoguePrefab: {fileID: 4283847168726583360, guid: 6b6d2c9de8466a1469ca54ad8e724be7, type: 3}
+    dialogueText: It's easily scalable and you can even add images and different
+      layouts
