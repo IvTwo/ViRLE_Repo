@@ -36,6 +36,15 @@ public partial class @DogControls: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""RightStick"",
+                    ""type"": ""Value"",
+                    ""id"": ""2e876057-ff57-4c3e-96d2-d6b6a4c3b905"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -93,6 +102,39 @@ public partial class @DogControls: IInputActionCollection2, IDisposable
                     ""action"": ""LeftStick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""d9c69e28-cbab-4873-a50d-997e1d7cd5ed"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightStick"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""84ecc464-243c-4132-86f4-0eb928041270"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightStick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""c3f13ae8-54fe-41f1-821a-464a40e7647e"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightStick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -102,6 +144,7 @@ public partial class @DogControls: IInputActionCollection2, IDisposable
         // DogWalk
         m_DogWalk = asset.FindActionMap("DogWalk", throwIfNotFound: true);
         m_DogWalk_LeftStick = m_DogWalk.FindAction("LeftStick", throwIfNotFound: true);
+        m_DogWalk_RightStick = m_DogWalk.FindAction("RightStick", throwIfNotFound: true);
     }
 
     ~@DogControls()
@@ -169,11 +212,13 @@ public partial class @DogControls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_DogWalk;
     private List<IDogWalkActions> m_DogWalkActionsCallbackInterfaces = new List<IDogWalkActions>();
     private readonly InputAction m_DogWalk_LeftStick;
+    private readonly InputAction m_DogWalk_RightStick;
     public struct DogWalkActions
     {
         private @DogControls m_Wrapper;
         public DogWalkActions(@DogControls wrapper) { m_Wrapper = wrapper; }
         public InputAction @LeftStick => m_Wrapper.m_DogWalk_LeftStick;
+        public InputAction @RightStick => m_Wrapper.m_DogWalk_RightStick;
         public InputActionMap Get() { return m_Wrapper.m_DogWalk; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -186,6 +231,9 @@ public partial class @DogControls: IInputActionCollection2, IDisposable
             @LeftStick.started += instance.OnLeftStick;
             @LeftStick.performed += instance.OnLeftStick;
             @LeftStick.canceled += instance.OnLeftStick;
+            @RightStick.started += instance.OnRightStick;
+            @RightStick.performed += instance.OnRightStick;
+            @RightStick.canceled += instance.OnRightStick;
         }
 
         private void UnregisterCallbacks(IDogWalkActions instance)
@@ -193,6 +241,9 @@ public partial class @DogControls: IInputActionCollection2, IDisposable
             @LeftStick.started -= instance.OnLeftStick;
             @LeftStick.performed -= instance.OnLeftStick;
             @LeftStick.canceled -= instance.OnLeftStick;
+            @RightStick.started -= instance.OnRightStick;
+            @RightStick.performed -= instance.OnRightStick;
+            @RightStick.canceled -= instance.OnRightStick;
         }
 
         public void RemoveCallbacks(IDogWalkActions instance)
@@ -213,5 +264,6 @@ public partial class @DogControls: IInputActionCollection2, IDisposable
     public interface IDogWalkActions
     {
         void OnLeftStick(InputAction.CallbackContext context);
+        void OnRightStick(InputAction.CallbackContext context);
     }
 }
