@@ -22,6 +22,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "SwapCamView",
+                    "type": "Button",
+                    "id": "320d4e86-4f97-429b-9a77-a69ede5bd32e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -94,7 +103,7 @@
                 {
                     "name": "negative",
                     "id": "84ecc464-243c-4132-86f4-0eb928041270",
-                    "path": "<Mouse>/leftButton",
+                    "path": "<Keyboard>/n",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -105,13 +114,24 @@
                 {
                     "name": "positive",
                     "id": "c3f13ae8-54fe-41f1-821a-464a40e7647e",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Keyboard>/m",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "RightStick",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "a9522a6a-5dee-4dd8-9341-208c60f24e1e",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SwapCamView",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

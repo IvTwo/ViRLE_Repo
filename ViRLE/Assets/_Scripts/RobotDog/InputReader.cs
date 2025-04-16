@@ -10,6 +10,7 @@ public class InputReader : ScriptableObject, DogControls.IDogWalkActions
     public event System.Action<Vector2> moveEvent = delegate { };
     public event System.Action<float> rotateEvent = delegate { };
     public event System.Action<float> stopRotateEvent = delegate { };
+    public event System.Action cameraSwitchEvent = delegate { };
 
     private DogControls _dogControls;
 
@@ -36,9 +37,17 @@ public class InputReader : ScriptableObject, DogControls.IDogWalkActions
         }
 
         if (context.canceled) {
-            Debug.Log("reset val");
+            //Debug.Log("reset val");
             stopRotateEvent?.Invoke(context.ReadValue<float>());
         }  
+    }
+
+    /// <summary>
+    /// Swap Controller Camera View
+    /// </summary>
+    public void OnSwapCamView(InputAction.CallbackContext context)
+    {
+        cameraSwitchEvent?.Invoke();
     }
 
     /// <summary>

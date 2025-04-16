@@ -7,7 +7,7 @@ using UnityEngine.Video;
 [CreateAssetMenu(fileName = "CustomUI/Content Container")]
 public class ContentContainer : ScriptableObject
 {
-    public TextAsset dialogueText;
+    public List<string> dialogueText;
     public Image image;
     public VideoClip video;
 }
