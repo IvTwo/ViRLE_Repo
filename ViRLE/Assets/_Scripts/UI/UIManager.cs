@@ -5,42 +5,46 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    //[SerializeField] private GameObject _nextButton;  // TO-DO: clean this up
-    //[SerializeField] private GameObject _backButton;
+    [SerializeField] private Button _nextButton;  // TO-DO: clean this up
+    [SerializeField] private Button _backButton;
+    private GameObject _currTextboxInstance;
+    private Text dialogueText;
 
-    //private DialogueScriptableObject[] _dialogueArray;    //TO-DO implement list ver
-    //[SerializeField] private DialogueScriptableObject _currDialogue;
-    //[SerializeField] private Transform _spawnPoint;
-    //private GameObject _currTextboxInstance;
-    //private int _currDialogueIndex = 0;
+    [SerializeField] private ActivityData activityData;
+    private ActivityData currActivity;
 
-    //void Start() {
-    //    ShowDialogue(0);
-    //}
+     void Start() {
+        _nextButton.onClick.AddListener(NextButtonClick);
+     }
 
+    private void StartActivity() {
+        if (_currTextboxInstance == null) {
+            _currTextboxInstance = Instantiate(currActivity.uiPrefab, this.gameObject.transform);
+            dialogueText = _currTextboxInstance.GetComponentInChildren<Text>();
+        }
 
-    //void Update() {
-        
-    //}
+        _nextButton.gameObject.SetActive(true);
+        _backButton.gameObject.SetActive(true);
 
-    //private void ShowDialogue(int index) {
-    //    if (_currTextboxInstance != null) {  Destroy(_currTextboxInstance); }
+        currActivity.LoadContent();
+        NextPage();
+    }
 
-    //    // get the dialogue data for the curr index
-    //    ContentContainer data = _currDialogue.data[index];
-        
-    //    // instantiate prefab and set its text
-    //    _currTextboxInstance = Instantiate(data.dialoguePrefab, _spawnPoint);
-    //    Text dialogueText = _currTextboxInstance.GetComponentInChildren<Text>();
-    //    if (dialogueText != null ) { dialogueText.text = data.dialogueText; }
-    //}
+    private void NextPage() {
+        if (dialogueText != null) { dialogueText.text = currActivity.Next(); }
+    }
 
-    //public void NextButtonClick() {
-    //    if (_currDialogueIndex < _currDialogue.data.Count - 1) {
-    //        _currDialogueIndex++;
-    //        ShowDialogue(_currDialogueIndex);
-    //    }
-    //}
+    public void StartRobotDogActivity() {
+        currActivity = activityData;    // TODO: will change this later
+        StartActivity();
+    }
+
+    /// <summary>
+    /// Assign these to the next and back buttons in the ui prefab
+    /// </summary>
+    public void NextButtonClick() {
+       NextPage();
+    }
 
     //public void BackButtonClick() {
     //    if (_currDialogueIndex > 0) {

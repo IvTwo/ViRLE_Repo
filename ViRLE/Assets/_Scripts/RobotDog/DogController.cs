@@ -12,6 +12,11 @@ public class DogController : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [SerializeField] private float rotSpeed;
 
+    [SerializeField] private MeshRenderer camView;
+    [SerializeField] private Material frontView;
+    [SerializeField] private Material topView;
+    private bool isFront = true;
+
     private Rigidbody rb;
     private Transform t;
     private Animator animator;
@@ -57,17 +62,25 @@ public class DogController : MonoBehaviour
         //animator.SetBool("isWalking", isMoving);
     }
 
+    private void SwitchCamView() {
+        isFront = !isFront;
+
+        camView.material = isFront ? frontView : topView;
+    }
+
     void OnEnable() {
         _inputReader.EnableWalkInputs();
         _inputReader.moveEvent += OnMove;
         _inputReader.rotateEvent += OnRotate;
         _inputReader.stopRotateEvent += StopRotate;
+        _inputReader.cameraSwitchEvent += SwitchCamView;
     }
 
     void OnDisable() {
         _inputReader.moveEvent -= OnMove;
         _inputReader.rotateEvent -= OnRotate;
         _inputReader.stopRotateEvent -= StopRotate;
+        _inputReader.cameraSwitchEvent -= SwitchCamView;
     }
 
     // EVENT LISTNEERS ---

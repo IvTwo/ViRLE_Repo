@@ -10,13 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 4990046534282770516}
   - component: {fileID: 8015815973452864597}
+  - component: {fileID: 447130938427033639}
   m_Layer: 0
   m_Name: RoboDogController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4990046534282770516
 RectTransform:
   m_ObjectHideFlags: 0
@@ -60,6 +61,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &447130938427033639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7268666087604512994}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd5a61b944b8d134faa962996b6d4564, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveAmount: 2
+  toggleKey: 32
 --- !u!1001 &3501377740204564655
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82,7 +97,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5657707998024065355, guid: 218b5521b828f6a4cb33a61b17886e86, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -314
+      value: -349
       objectReference: {fileID: 0}
     - target: {fileID: 5657707998024065355, guid: 218b5521b828f6a4cb33a61b17886e86, type: 3}
       propertyPath: m_LocalPosition.z
@@ -90,19 +105,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5657707998024065355, guid: 218b5521b828f6a4cb33a61b17886e86, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.997556
+      value: 0.997811
       objectReference: {fileID: 0}
     - target: {fileID: 5657707998024065355, guid: 218b5521b828f6a4cb33a61b17886e86, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.000000059604638
+      value: 0.00055718125
       objectReference: {fileID: 0}
     - target: {fileID: 5657707998024065355, guid: 218b5521b828f6a4cb33a61b17886e86, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.061761938
+      value: -0.061758127
       objectReference: {fileID: 0}
     - target: {fileID: 5657707998024065355, guid: 218b5521b828f6a4cb33a61b17886e86, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.032673348
+      value: 0.023639165
       objectReference: {fileID: 0}
     - target: {fileID: 5657707998024065355, guid: 218b5521b828f6a4cb33a61b17886e86, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -114,7 +129,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5657707998024065355, guid: 218b5521b828f6a4cb33a61b17886e86, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 3.738
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 7002359439259280195, guid: 218b5521b828f6a4cb33a61b17886e86, type: 3}
       propertyPath: m_Name
@@ -171,30 +186,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7002359439259280195, guid: 218b5521b828f6a4cb33a61b17886e86, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1177249952555162392}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 218b5521b828f6a4cb33a61b17886e86, type: 3}
---- !u!1 &5889024203243209708 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7002359439259280195, guid: 218b5521b828f6a4cb33a61b17886e86, type: 3}
-  m_PrefabInstance: {fileID: 3501377740204564655}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1177249952555162392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5889024203243209708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd5a61b944b8d134faa962996b6d4564, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveAmount: 2
-  toggleKey: 32
 --- !u!4 &9084697172792181220 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5657707998024065355, guid: 218b5521b828f6a4cb33a61b17886e86, type: 3}
