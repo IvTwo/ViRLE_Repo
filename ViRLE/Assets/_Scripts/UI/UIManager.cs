@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
-{
+public class UIManager : MonoBehaviour {
     [SerializeField] private Button _nextButton;  // TO-DO: clean this up
     [SerializeField] private Button _backButton;
     private GameObject _currTextboxInstance;
@@ -13,9 +12,12 @@ public class UIManager : MonoBehaviour
     [SerializeField] private ActivityData activityData;
     private ActivityData currActivity;
 
-     void Start() {
+    // TODO: different way of organizing this later
+    [SerializeField] private RobotDogActivityManager robotDogActivityManager;
+
+    void Start() {
         _nextButton.onClick.AddListener(NextButtonClick);
-     }
+    }
 
     private void StartActivity() {
         if (_currTextboxInstance == null) {
@@ -31,19 +33,15 @@ public class UIManager : MonoBehaviour
     }
 
     private void NextPage() {
+        CheckContinueConditions();
         if (dialogueText != null) { dialogueText.text = currActivity.Next(); }
-    }
-
-    public void StartRobotDogActivity() {
-        currActivity = activityData;    // TODO: will change this later
-        StartActivity();
     }
 
     /// <summary>
     /// Assign these to the next and back buttons in the ui prefab
     /// </summary>
     public void NextButtonClick() {
-       NextPage();
+        NextPage();
     }
 
     //public void BackButtonClick() {
@@ -52,4 +50,23 @@ public class UIManager : MonoBehaviour
     //        ShowDialogue(_currDialogueIndex);
     //    }
     //}
+
+
+    // TODO: Probably move this to a different script, but for now lets see how this would work
+
+    /// <summary>
+    /// Essentially 
+    /// </summary>
+    private void CheckContinueConditions() {
+        switch (currActivity.index) {
+            case 1:
+                robotDogActivityManager.SpawnDogController();
+                break;
+        }
+    }
+
+    public void StartRobotDogActivity() {
+        currActivity = activityData;    // TODO: will change this later
+        StartActivity();
+    }
 }

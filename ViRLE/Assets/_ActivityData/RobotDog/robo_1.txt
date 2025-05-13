@@ -1,0 +1,5 @@
+Welcome to the Robot Dog Risk Hunt activity. Your job is to complete missions using the robot dog to identify safety risks.
+First, let's take a look at the robot dog controller, it should be mounted on your left controller. The screen will show you a POV from the dogs camera.
+Next, let's learn how to move the robot dog. Use the joysticks to move forward, backward, and turn.
+Now use [BUTTON] to switch between front, side, and top camera views to explore your surroundings.
+Awesome! 

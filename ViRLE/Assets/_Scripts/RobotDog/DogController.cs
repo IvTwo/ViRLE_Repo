@@ -30,6 +30,7 @@ public class DogController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         t = transform;
         animator = GetComponent<Animator>();
+        animator.speed = 0f;
     }
 
     void FixedUpdate() {

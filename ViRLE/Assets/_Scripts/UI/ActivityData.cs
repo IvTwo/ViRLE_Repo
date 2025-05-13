@@ -9,14 +9,14 @@ public class ActivityData : ScriptableObject
     public GameObject uiPrefab;
     public List<ContentContainer> contentContainers;
     public ContentContainer currContent;    // TODO: lmao hard setting this rn
-    private int index;
+    public int index { get; private set; }
 
     public void LoadContent() {
         index = 0;
+        currContent.LoadDialogueFromFile();
     }
 
     public string Next() {
-        Debug.Log(index);
         string stringToReturn =  currContent.dialogueText[index];
         index++;
         return stringToReturn;
