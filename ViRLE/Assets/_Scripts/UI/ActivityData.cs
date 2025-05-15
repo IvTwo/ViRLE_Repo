@@ -17,8 +17,12 @@ public class ActivityData : ScriptableObject
     }
 
     public string Next() {
-        string stringToReturn =  currContent.dialogueText[index];
-        index++;
-        return stringToReturn;
+        if (index >= currContent.dialogueText.Count) { return null;  }
+        return currContent.dialogueText[index++];
+    }
+
+    public string Prev() {
+        if (index - 1 < 0) { return null; }
+        return currContent.dialogueText[index--];
     }
 }

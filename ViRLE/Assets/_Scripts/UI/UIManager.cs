@@ -4,22 +4,27 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour {
-    [SerializeField] private Button _nextButton;  // TO-DO: clean this up
+    [SerializeField] private Button _nextButton;
     [SerializeField] private Button _backButton;
+    [SerializeField] private GameObject mainMenu;   // drag in the child object called "main menu"
+
+
     private GameObject _currTextboxInstance;
     private Text dialogueText;
-
-    [SerializeField] private ActivityData activityData;
     private ActivityData currActivity;
 
-    // TODO: different way of organizing this later
-    [SerializeField] private RobotDogActivityManager robotDogActivityManager;
+    // TODO: different way of organizing this later     --> maybe i can create a list and iterate through it to add all the events?
+    // probably also need a way to store the current activity manager type, rn going to use this serilized ref
+    [SerializeField] private ActivityManager robotDogActivityManager;
 
     void Start() {
         _nextButton.onClick.AddListener(NextButtonClick);
+        robotDogActivityManager.OnStartActivity += StartActivity;
     }
 
-    private void StartActivity() {
+    private void StartActivity(ActivityData activityData) {
+        currActivity = activityData;
+
         if (_currTextboxInstance == null) {
             _currTextboxInstance = Instantiate(currActivity.uiPrefab, this.gameObject.transform);
             dialogueText = _currTextboxInstance.GetComponentInChildren<Text>();
@@ -30,43 +35,31 @@ public class UIManager : MonoBehaviour {
 
         currActivity.LoadContent();
         NextPage();
+        MainMenuVisability(false);
     }
 
     private void NextPage() {
-        CheckContinueConditions();
-        if (dialogueText != null) { dialogueText.text = currActivity.Next(); }
+        robotDogActivityManager.CheckConditions();  // TODO: change this to a bool return prolly
+        string nextText = currActivity.Next();
+        if (nextText != null) { dialogueText.text = nextText; }
+    }
+
+    private void PrevPage() {
+        string prevText = currActivity.Prev();
+        if (prevText != null) { dialogueText.text = prevText; }
     }
 
     /// <summary>
-    /// Assign these to the next and back buttons in the ui prefab
+    /// Assign these to the next and back buttons in the ui prefab (kinda jank ik)
     /// </summary>
-    public void NextButtonClick() {
-        NextPage();
-    }
+    public void NextButtonClick() { NextPage(); }
 
-    //public void BackButtonClick() {
-    //    if (_currDialogueIndex > 0) {
-    //        _currDialogueIndex--;
-    //        ShowDialogue(_currDialogueIndex);
-    //    }
-    //}
-
-
-    // TODO: Probably move this to a different script, but for now lets see how this would work
+    public void BackButtonClick() { PrevPage(); }
 
     /// <summary>
-    /// Essentially 
+    /// Sets the Main Menu visability (only visuals)
     /// </summary>
-    private void CheckContinueConditions() {
-        switch (currActivity.index) {
-            case 1:
-                robotDogActivityManager.SpawnDogController();
-                break;
-        }
-    }
-
-    public void StartRobotDogActivity() {
-        currActivity = activityData;    // TODO: will change this later
-        StartActivity();
+    public void MainMenuVisability(bool b) {
+        mainMenu.SetActive(b);
     }
 }
