@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4990046534282770516
 RectTransform:
   m_ObjectHideFlags: 0
@@ -83,6 +83,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4990046534282770516}
     m_Modifications:
+    - target: {fileID: 1087301314343710828, guid: 218b5521b828f6a4cb33a61b17886e86, type: 3}
+      propertyPath: m_Name
+      value: CamView
+      objectReference: {fileID: 0}
     - target: {fileID: 1087301314343710828, guid: 218b5521b828f6a4cb33a61b17886e86, type: 3}
       propertyPath: m_Layer
       value: 5

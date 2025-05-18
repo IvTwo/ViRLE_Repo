@@ -23,6 +23,6 @@ public class ActivityData : ScriptableObject
 
     public string Prev() {
         if (index - 1 < 0) { return null; }
-        return currContent.dialogueText[index--];
+        return currContent.dialogueText[--index];
     }
 }

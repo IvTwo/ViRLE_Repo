@@ -26,6 +26,8 @@ public class DogController : MonoBehaviour
     private bool isMoving = false;
     private float movementThresh = 0.01f;
 
+    public Vector3 Movement {  get; private set; }
+
     void Awake() {
         rb = GetComponent<Rigidbody>();
         t = transform;
@@ -35,11 +37,11 @@ public class DogController : MonoBehaviour
 
     void FixedUpdate() {
         // Compute movement direction
-        Vector3 movement = transform.forward * moveDir.y * moveSpeed * Time.fixedDeltaTime +
+        Movement = transform.forward * moveDir.y * moveSpeed * Time.fixedDeltaTime +
                            transform.right * moveDir.x * moveSpeed * Time.fixedDeltaTime;
 
         // Apply movement using MovePosition (preserving physics interactions)
-        rb.MovePosition(rb.position + movement);
+        rb.MovePosition(rb.position + Movement);
 
         // apply rotation
         if (rotationInput != 0) {
