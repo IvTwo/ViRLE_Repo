@@ -28,7 +28,7 @@ public class RobotDogActivityManager : ActivityManager
 
             case 3:
                 SpawnGameMarkers();
-                SetLineRenderer();
+                SpawnLineRenderer();
                 break;
         }
     }
@@ -44,7 +44,7 @@ public class RobotDogActivityManager : ActivityManager
         }
     }
 
-    private void SetLineRenderer() {
+    private void SpawnLineRenderer() {
         guideLine.gameObject.SetActive(true);
         guideLine.startWidth = 0.8f;
         guideLine.endWidth = 1.0f;
@@ -61,4 +61,6 @@ public class RobotDogActivityManager : ActivityManager
         // TODO: find nearest activity
         guideLine.SetPosition(1, riskSites[0].position);
     }
+
+
 }

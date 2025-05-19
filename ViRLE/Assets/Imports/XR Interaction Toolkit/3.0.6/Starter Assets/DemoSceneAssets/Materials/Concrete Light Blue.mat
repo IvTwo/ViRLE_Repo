@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Concrete Light Blue
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
-  m_Parent: {fileID: 2100000, guid: 28cdd04d9b16a434a91308bbcb34eb10, type: 2}
+  m_Parent: {fileID: 2100000, guid: d4bc7e9388dec76428cf9d7b654d73ef, type: 2}
   m_ModifiedSerializedProperties: 6
   m_ValidKeywords:
   - _METALLICSPECGLOSSMAP
