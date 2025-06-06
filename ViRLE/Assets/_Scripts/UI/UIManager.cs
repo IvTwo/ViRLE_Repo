@@ -22,6 +22,9 @@ public class UIManager : MonoBehaviour {
         robotDogActivityManager.OnStartActivity += StartActivity;
     }
 
+    /// <summary>
+    /// Call when you start a NEW activity
+    /// </summary>
     private void StartActivity(ActivityData activityData) {
         currActivity = activityData;
 
@@ -33,7 +36,7 @@ public class UIManager : MonoBehaviour {
         _nextButton.gameObject.SetActive(true);
         _backButton.gameObject.SetActive(true);
 
-        currActivity.LoadContent();
+        currActivity.LoadNextContent();
         NextPage();
         MainMenuVisability(false);
     }

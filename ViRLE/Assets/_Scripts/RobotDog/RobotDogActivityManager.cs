@@ -17,7 +17,8 @@ public class RobotDogActivityManager : ActivityManager
     }
 
     public override void CheckConditions() {
-        switch (activityData.index) {
+        // TODO: this might have to be nested (logic wise) switch to check content and dialogue Index
+        switch (activityData.GetCurrDialogueIndex()) {
             case 1:
                 SpawnDogController();
                 break;
@@ -62,5 +63,11 @@ public class RobotDogActivityManager : ActivityManager
         guideLine.SetPosition(1, riskSites[0].position);
     }
 
+
+    /// TODO: im assuming replace this with a UI state machine
+    /// Doing this for 5/29 meeting
+    public void SpawnChoiceMenu() {
+
+    }
 
 }

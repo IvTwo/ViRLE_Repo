@@ -12,6 +12,12 @@ public class ContentContainer : ScriptableObject
     public Image image;
     public VideoClip video;
 
+    // might add a string ID here which tells what activity to link to another?
+
+    public int Index { get; private set; }
+
+    public void ResetIndex() {  Index = 0; }
+
     /// <summary>
     /// Converts the lines in the .txt file to a list of string lines
     /// </summary>
@@ -24,5 +30,15 @@ public class ContentContainer : ScriptableObject
         } else {
             Debug.Log("No dialogue .txt file in content scriptable object");
         }
+    }
+
+    public string Next() {
+        if (Index >= dialogueText.Count) { return null; }
+        return dialogueText[Index++];
+    }
+
+    public string Prev() {
+        if (Index - 1 < 0) { return null; }
+        return dialogueText[--Index];
     }
 }
